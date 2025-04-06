@@ -67,12 +67,12 @@ begin
     -- we update our counter a hundred times every second since 
     -- I plan on using the two rightmost digits 00:00 to track the centi-seconds
     -- the left two segments are our actual seconds
-    counter_register : process(clk) is
+    counter_register : process(clk_100Hz) is
     begin
-        if rising_edge(clk) then
+        if rising_edge(clk_100Hz) then
             if rst = '1' then
                 value_i <= 0;
-            elsif rising_edge(clk_100Hz) then
+            else
                 if value_i = 9999 then
                     value_i <= 0;
                 else
